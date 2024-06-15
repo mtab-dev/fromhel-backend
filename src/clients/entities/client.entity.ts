@@ -11,27 +11,27 @@ export class Client {
         unique: true,
         index: true
     })
-    public clientId: string;
+     clientId: string;
 
     @Prop({
         type: String,
         required: true,
     })
-    public clientName: string;
+     clientName: string;
 
     @Prop({
         type: String,
         required: true,
         unique: true,
     })
-    public email: string;
+     email: string;
 
     @Prop({
         type: Date,
         required: true,
         default: now()
     })
-    public registeredAt: Date;
+     registeredAt: Date;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);

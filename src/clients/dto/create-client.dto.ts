@@ -9,7 +9,7 @@ export class CreateClientDto {
         example: '123456',
         required: true
     })
-    public clientId!: string;
+     clientId!: string;
 
     @IsString()
     @ApiProperty({
@@ -18,7 +18,7 @@ export class CreateClientDto {
         example: 'John Doe',
         required: true
     })
-    public clientName!: string;
+     clientName!: string;
 
     @IsString()
     @ApiProperty({
@@ -27,7 +27,7 @@ export class CreateClientDto {
         example: 'johndoe@johndow.com',
         required: true
         })
-    public email!: string;
+     email!: string;
 
     @IsDate()
     @ApiProperty({
