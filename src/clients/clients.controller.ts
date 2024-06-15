@@ -1,34 +1,45 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ClientsService } from './clients.service';
+import { Controller, Get, Post, Body, Param, Delete, ConflictException } from '@nestjs/common';
+import { ClientService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
-import { UpdateClientDto } from './dto/update-client.dto';
 
 @Controller('clients')
-export class ClientsController {
-  constructor(private readonly clientsService: ClientsService) {}
+export class ClientController {
 
-  @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
+  constructor(private readonly clientService: ClientService) { }
+  @Post('register') //registering clients
+  async clientRegister(@Body() createClientDto: CreateClientDto) {
+    // const email = createClientDto.email
+    const emailExists: boolean = await this.clientService.checkEmail(createClientDto.email);
+    if (emailExists) {
+      throw new ConflictException('Email are already exists');
+    }
+    return this.clientService.clientRegister(createClientDto);
   }
 
-  @Get()
-  findAll() {
-    return this.clientsService.findAll();
+  @Get('list') //list all clients
+  clientList() {
+    return this.clientService.clientList();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(+id);
+  @Get('listEmail/:email') //list a client by email
+  clientListOne(@Param('email') email: string) {
+    return this.clientService.clientListEmail(email);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
+  @Get('listId/:id') //list a client by Id
+  clientListId(@Param('id') id: string){
+    return this.clientService.clientListId(id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(+id);
+  @Get('dateSort') //ordenar os clientes por data de cadastro
+  clientSort(){
+    return this.clientService.clientSort();
   }
+
+  
+  @Delete('delete/:id') //removing a client by id
+  clientDelete(@Param('id') id: string) {
+    return this.clientService.clientDelete(id);
+  }
+
 }
