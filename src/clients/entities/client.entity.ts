@@ -1,24 +1,37 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'; 
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, now } from 'mongoose';
 
 export type clientDocument = HydratedDocument<Client>;
 
 @Schema()
 export class Client {
-    @Prop({ required: true })
-    clientId: string;
+    @Prop({
+        type: String,
+        required: true,
+        unique: true,
+        index: true
+    })
+    public clientId: string;
 
-    @Prop({ required: true })
-    clientName: string;
+    @Prop({
+        type: String,
+        required: true,
+    })
+    public clientName: string;
 
-    @Prop({ required: true })
-    email: string;
+    @Prop({
+        type: String,
+        required: true,
+        unique: true,
+    })
+    public email: string;
 
-    @Prop({ 
+    @Prop({
+        type: Date,
         required: true,
         default: now()
     })
-    registeredAt: Date;
+    public registeredAt: Date;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);
