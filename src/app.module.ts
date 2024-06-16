@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { ClientsModule } from './clients/clients.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
-const DB_URL = `mongodb+srv://mtab-admin:gabrielematheusprogramadoresfrenteeverso@cluster0.lfs0k4s.mongodb.net/`
-
 @Module({
   imports: [
-    MongooseModule.forRoot(DB_URL),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_URL_PRD),
     ClientsModule,
   ],
 })
