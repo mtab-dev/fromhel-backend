@@ -6,11 +6,13 @@ export type clientDocument = HydratedDocument<Client>;
 @Schema()
 export class Client {
     @Prop({
-        type: String,
+        immutable: true,
         required: true,
-        unique: true,
-        index: true
-    })
+        type: String,
+        index: true,
+        nullable: false,
+        unique: true
+      })
      clientId: string;
 
     @Prop({
