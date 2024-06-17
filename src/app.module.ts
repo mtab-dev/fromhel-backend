@@ -6,7 +6,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_URL_PRD),
+    MongooseModule.forRoot(process.env.MONGO_URL_PRD,
+      {dbName: process.env.MONGO_CONNECTION_DATABASE}
+    ),
     ClientsModule,
   ],
 })
