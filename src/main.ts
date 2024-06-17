@@ -18,8 +18,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('docs', app, document)
 
-  void app.listen(process.env.USER_PORT)
-
 
   Logger.log(`=============${process.env.USER_PORT}==============`)
   Logger.log(`MONGO URL: ${process.env.MONGO_URL_PRD}`)
