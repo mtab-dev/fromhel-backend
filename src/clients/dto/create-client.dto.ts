@@ -31,10 +31,10 @@ export class CreateClientDto {
 
     @IsDate()
     @ApiProperty({
-        type: Date,
+        type: String,
         description: 'Client registration date',
         example: '2021-09-01',
         required: true
     })
-    registeredAt!: Date;
+    registeredAt?: String;
 }

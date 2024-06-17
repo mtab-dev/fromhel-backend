@@ -27,11 +27,11 @@ export class Client {
      email: string;
 
     @Prop({
-        type: Date,
-        required: true,
+        type: String,
+        required: false,
         default: now()
     })
-     registeredAt: Date;
+     registeredAt: String;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);
