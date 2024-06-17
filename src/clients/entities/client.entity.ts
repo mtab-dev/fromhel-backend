@@ -31,7 +31,7 @@ export class Client {
         required: false,
         default: now()
     })
-     registeredAt: String;
+     registeredAt?: String;
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);

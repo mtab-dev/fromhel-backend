@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsString, IsDate } from 'class-validator';
+import { IsString, IsDate, IsOptional } from 'class-validator';
 export class CreateClientDto {
 
     @IsString()
@@ -30,11 +30,12 @@ export class CreateClientDto {
      email!: string;
 
     @IsDate()
+    @IsOptional()
     @ApiProperty({
         type: String,
         description: 'Client registration date',
         example: '2021-09-01',
-        required: true
+        required: false
     })
     registeredAt?: String;
 }

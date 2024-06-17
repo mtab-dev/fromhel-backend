@@ -25,7 +25,8 @@ export class ClientService {
       await new this.clientModel(createClientDto).save(); // Save the client
       return 'Client created successfully';
     } catch (error) {
-      return 'Client registration failed';
+      return 'Client registration failed' + error;
+      
     }
   }
 
