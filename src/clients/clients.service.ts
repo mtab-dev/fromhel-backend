@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateClientDto } from './dto/create-client.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { generateId } from 'src/shared/infra/utils/generate.util';
 import { Client, clientDocument } from './schema/client.entity';
 
 @Injectable()
@@ -22,6 +23,7 @@ export class ClientService {
 
   async clientRegister(createClientDto: CreateClientDto) { //register client
     try {
+      createClientDto.clientId = generateId(); // Generate a unique id for the client
       await new this.clientModel(createClientDto).save(); // Save the client
       return 'Client created successfully';
     } catch (error) {

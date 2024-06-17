@@ -3,13 +3,15 @@ import { IsString, IsDate, IsOptional } from 'class-validator';
 export class CreateClientDto {
 
     @IsString()
+    @IsOptional()
     @ApiProperty({
         type: String,
         description: 'Client id',
         example: '123456',
-        required: true
+        required: true,
+        readOnly: true
     })
-     clientId!: string;
+     clientId?: string;
 
     @IsString()
     @ApiProperty({
