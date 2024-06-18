@@ -1,7 +1,7 @@
 import { ApiBody, ApiBearerAuth , ApiResponse, ApiTags } from '@nestjs/swagger'
 import { Controller, Get, Post, Body, Param, Delete, ConflictException } from '@nestjs/common';
-import { ClientService } from './clients.service';
-import { CreateClientDto } from './dto/create-client.dto';
+import { ClientService } from '../useCases/clients.service';
+import { CreateClientDto } from '../dto/create-client.dto';
 
 @Controller('clients')
 export class ClientController {

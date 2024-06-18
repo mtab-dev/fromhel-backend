@@ -18,7 +18,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot(),
-            mongoose_1.MongooseModule.forRoot(process.env.MONGO_URL_PRD),
+            mongoose_1.MongooseModule.forRoot(process.env.MONGO_URL_PRD, { dbName: process.env.MONGO_CONNECTION_DATABASE }),
             clients_module_1.ClientsModule,
         ],
     })

@@ -17,11 +17,13 @@ class CreateClientDto {
 exports.CreateClientDto = CreateClientDto;
 __decorate([
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     (0, swagger_1.ApiProperty)({
         type: String,
         description: 'Client id',
         example: '123456',
-        required: true
+        required: true,
+        readOnly: true
     }),
     __metadata("design:type", String)
 ], CreateClientDto.prototype, "clientId", void 0);
@@ -47,12 +49,13 @@ __decorate([
 ], CreateClientDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsDate)(),
+    (0, class_validator_1.IsOptional)(),
     (0, swagger_1.ApiProperty)({
-        type: Date,
+        type: String,
         description: 'Client registration date',
         example: '2021-09-01',
-        required: true
+        required: false
     }),
-    __metadata("design:type", Date)
+    __metadata("design:type", String)
 ], CreateClientDto.prototype, "registeredAt", void 0);
 //# sourceMappingURL=create-client.dto.js.map
