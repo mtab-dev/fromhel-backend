@@ -5,14 +5,15 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 // import { generateId } from 'src/shared/utils/generate.util'
 import { Client, clientDocument } from '../schema/client.entity';
-import { generateId } from 'src/shared/utils/generate.util';
+// import { generateId } from '/src/shared/utils/generate.util.ts';
+// import { generateId } from '@shared/utils/generate.util';
 
 @Injectable()
 export class ClientService {
   constructor(
     @InjectModel('Client')
     public clientModel: Model<clientDocument>,
-  ) {}
+  ) { }
 
   async checkEmail(email: string) {
     //check if the email already exists in db
@@ -27,7 +28,7 @@ export class ClientService {
   async clientRegister(createClientDto: CreateClientDto) {
     //register client
     try {
-      createClientDto.clientId = generateId();
+      createClientDto.clientId =  Math.random().toString(36).substring(7);
       await new this.clientModel(createClientDto).save(); // Save the client
       return 'Client created successfully';
     } catch (error) {
@@ -66,14 +67,14 @@ export class ClientService {
     return this.clientModel.findOne({ createdAt }).exec();
   }
 
-  async clientDelete(id: string) {
-    //delete a client by id
-    try {
-      return await this.clientModel.deleteOne({ _id: id }).exec();
-    } catch (error) {
-      return 'Error deleting the client';
-    }
-  }
+  // async clientDeleteAll(id: string) {
+  //   //delete a client by id
+  //   try {
+  //     return await this.clientModel.deleteOne({ _id: id }).exec();
+  //   } catch (error) {
+  //     return 'Error deleting the client';
+  //   }
+  // }
 
   async clientSort(): Promise<Client[]> {
     try {
@@ -83,12 +84,12 @@ export class ClientService {
     }
   }
 
-  async clientReset() {
-    //delete all clients in db
-    try {
-      return await this.clientModel.deleteMany({}).exec();
-    } catch (error) {
-      return 'Error deleting the clients';
-    }
-  }
+  // async clientReset() {
+  //   //delete all clients in db
+  //   try {
+  //     return await this.clientModel.deleteMany({}).exec();
+  //   } catch (error) {
+  //     return 'Error deleting the clients';
+  //   }
+  // }
 }

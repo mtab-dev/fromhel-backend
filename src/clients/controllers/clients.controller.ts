@@ -57,15 +57,15 @@ export class ClientController {
     return this.clientService.clientListId(id);
   }
   
-  @Delete('delete/:id')
-  @ApiTags('Delete Methods')
-  @ApiBody({ type:  CreateClientDto})
-  @ApiResponse({
-    status: 200,
-    description: 'The client has been succesfully deleted'
-  }) //removing a client by id
-  clientDelete(@Param('id') id: string) {
-    return this.clientService.clientDelete(id);
-  }
+  // @Delete('delete/:id')
+  // @ApiTags('Delete Methods')
+  // @ApiBody({ type:  CreateClientDto})
+  // @ApiResponse({
+  //   status: 200,
+  //   description: 'The client has been succesfully deleted'
+  // }) //removing a client by id
+  // clientDelete(@Param('id') id: string) {
+  //   return this.clientService.clientDelete(id);
+  // }
 
 }
