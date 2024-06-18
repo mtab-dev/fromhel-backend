@@ -1,6 +1,6 @@
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { Controller, Param, Delete } from '@nestjs/common';
-import { ClientService } from '../../domain/useCases/clients.service';
+import { ClientService } from '../../domain/services/clients.service';
 import { CreateClientDto } from '../dto/create-client.dto';
 
 @Controller()

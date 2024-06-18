@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ClientService } from './domain/useCases/clients.service';
+import { ClientService } from './domain/services/clients.service';
 import { Client, ClientSchema } from './domain/schema/client.entity';
 import { findClientController } from './application/controllers/findClients.controller';
 import { findEmailController } from './application/controllers/findEmail.controller';
