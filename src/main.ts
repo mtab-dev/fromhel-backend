@@ -1,4 +1,5 @@
 import { ApiDocumentation } from './config/apiDocumentation'
+import { ENVIROMENT } from './config/env';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
@@ -20,9 +21,10 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document)
   ApiDocumentation.setup(app)
   
-  await app.listen(process.env.USER_PORT);
-  Logger.log(`=============${process.env.USER_PORT}==============`)
-  Logger.log(`MONGO URL: ${process.env.MONGO_URL_PRD}`)
+  await app.listen(ENVIROMENT.USER_PORT);
+  Logger.log(`=============${ENVIROMENT.USER_PORT}==============`)
+  Logger.log(`MONGO URL: ${ENVIROMENT.MONGO_URL_PRD}`)
+
 
 
 }

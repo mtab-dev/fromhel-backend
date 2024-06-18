@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const apiDocumentation_1 = require("./config/apiDocumentation");
+const env_1 = require("./config/env");
 const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const common_1 = require("@nestjs/common");
@@ -18,7 +19,7 @@ async function bootstrap() {
     swagger_1.SwaggerModule.setup('api/docs', app, document);
     apiDocumentation_1.ApiDocumentation.setup(app);
     await app.listen(process.env.USER_PORT);
-    common_1.Logger.log(`=============${process.env.USER_PORT}==============`);
+    common_1.Logger.log(`=============${env_1.ENVIROMENT.USER_PORT}==============`);
     common_1.Logger.log(`MONGO URL: ${process.env.MONGO_URL_PRD}`);
 }
 bootstrap();

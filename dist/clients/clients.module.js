@@ -9,9 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientsModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const clients_service_1 = require("./useCases/clients.service");
-const clients_controller_1 = require("./controllers/clients.controller");
-const client_entity_1 = require("./schema/client.entity");
+const clients_service_1 = require("./domain/services/clients.service");
+const client_entity_1 = require("./domain/schema/client.entity");
+const findClients_controller_1 = require("./application/controllers/findClients.controller");
+const findEmail_controller_1 = require("./application/controllers/findEmail.controller");
+const registerClient_controller_1 = require("./application/controllers/registerClient.controller");
+const clientsById_controller_1 = require("./application/controllers/clientsById.controller");
+const removeClient_controller_1 = require("./application/controllers/removeClient.controller");
 let ClientsModule = class ClientsModule {
 };
 exports.ClientsModule = ClientsModule;
@@ -22,7 +26,13 @@ exports.ClientsModule = ClientsModule = __decorate([
                 { name: client_entity_1.Client.name, schema: client_entity_1.ClientSchema },
             ]),
         ],
-        controllers: [clients_controller_1.ClientController],
+        controllers: [
+            findClients_controller_1.findClientController,
+            findEmail_controller_1.findEmailController,
+            registerClient_controller_1.registerClientController,
+            clientsById_controller_1.IdFindController,
+            removeClient_controller_1.removeClientController
+        ],
         providers: [clients_service_1.ClientService],
     })
 ], ClientsModule);

@@ -1,0 +1,5 @@
+export const ENVIROMENT = {
+    USER_PORT: process.env.USER_PORT,
+    MONGO_CONNECTION_DATABASE: process.env.MONGO_CONNECTION_DATABASE,
+    MONGO_URL_PRD: process.env.MONGO_URL_PRD
+}
