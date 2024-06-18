@@ -1,22 +1,22 @@
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { Controller, Get, Param } from '@nestjs/common';
-import { ClientService } from '../useCases/clients.service';
+import { ClientService } from '../../domain/useCases/clients.service';
 import { CreateClientDto } from '../dto/create-client.dto';
 
 @Controller()
-export class IdFindController {
+export class findEmailController {
     constructor(private readonly clientService: ClientService) { }
 
- 
-    @Get('listId/:id')
+    @Get('listEmail/:email') //list a client by email
 
     @ApiTags('List Methods')
     @ApiBody({ type:  CreateClientDto})
     @ApiResponse({
       status: 200,
-      description: 'The client id has been succesfully finded'
-    }) //list a client by Id
-    clientListId(@Param('id') id: string){
-      return this.clientService.clientListId(id);
+      description: 'The client email has been succesfully finded'
+    })
+
+    clientListOne(@Param('email') email: string) {
+      return this.clientService.clientListEmail(email);
     }
 }

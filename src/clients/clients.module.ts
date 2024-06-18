@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ClientService } from './useCases/clients.service';
-import { Client, ClientSchema } from './schema/client.entity';
-import { findClientController } from './controllers/findClients.controller';
-import { findEmailController } from './controllers/findEmail.controller';
-import { registerClientController } from './controllers/registerClient.controller';
-import { IdFindController } from './controllers/clientsById.controller';
-import { removeClientController } from './controllers/removeClient.controller';
+import { ClientService } from './domain/useCases/clients.service';
+import { Client, ClientSchema } from './domain/schema/client.entity';
+import { findClientController } from './application/controllers/findClients.controller';
+import { findEmailController } from './application/controllers/findEmail.controller';
+import { registerClientController } from './application/controllers/registerClient.controller';
+import { IdFindController } from './application/controllers/clientsById.controller';
+import { removeClientController } from './application/controllers/removeClient.controller';
 
 @Module({
   imports: [  
