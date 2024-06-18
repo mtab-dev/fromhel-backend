@@ -5,11 +5,12 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 // import { generateId } from 'src/shared/utils/generate.util'
 import { Client, clientDocument } from '../schema/client.entity';
+import { IClientContract } from '../../../shared/contracts/service.contract';
 // import { generateId } from '/src/shared/utils/generate.util.ts';
-// import { generateId } from '@shared/utils/generate.util';
+// import { generateId } from '@shared/utils/generate. util';
 
 @Injectable()
-export class ClientService {
+export class ClientService implements IClientContract{
   constructor(
     @InjectModel('Client')
     public clientModel: Model<clientDocument>,
@@ -54,27 +55,19 @@ export class ClientService {
     }
   }
 
-  async clientListId(id: string) {
+  async clientListId(id: string){
     //list a client by Id
     try {
       return this.clientModel.find({ _id: id }).exec();
     } catch (error) {
-      return 'Error at finding client';
+      return 'Error at finding client'
     }
   }
+
   async clientListDate(createdAt: any) {
     //list a client by date of creation
     return this.clientModel.findOne({ createdAt }).exec();
   }
-
-  // async clientDeleteAll(id: string) {
-  //   //delete a client by id
-  //   try {
-  //     return await this.clientModel.deleteOne({ _id: id }).exec();
-  //   } catch (error) {
-  //     return 'Error deleting the client';
-  //   }
-  // }
 
   async clientRemove(clientId: string){
     try{
@@ -92,12 +85,12 @@ export class ClientService {
     }
   }
 
-  // async clientReset() {
-  //   //delete all clients in db
-  //   try {
-  //     return await this.clientModel.deleteMany({}).exec();
-  //   } catch (error) {
-  //     return 'Error deleting the clients';
-  //   }
-  // }
+  async clientReset(): Promise<void> {
+    //delete all clients in db
+    try {
+      await this.clientModel.deleteMany({}).exec();
+    } catch (error) {
+      'Error deleting the clients';
+    }
+  }
 }
