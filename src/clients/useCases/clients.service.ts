@@ -76,6 +76,14 @@ export class ClientService {
   //   }
   // }
 
+  async clientRemove(clientId: string){
+    try{
+      await this.clientModel.deleteOne({clientId: clientId})
+    }catch(error){
+      throw new Error(`Failed to remove client with ID ${clientId}: ${error.message}`)
+    }
+  }
+
   async clientSort(): Promise<Client[]> {
     try {
       return this.clientModel.find().sort({ createdAt: -1 }).exec();
