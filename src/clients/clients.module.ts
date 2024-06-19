@@ -1,3 +1,4 @@
+import { MailerController } from './application/controllers/mailer.controller';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ClientService } from './domain/services/clients.service';
@@ -33,7 +34,8 @@ import { MailerModule } from '@nestjs-modules/mailer'
     findEmailController,
     registerClientController,
     IdFindController,
-    removeClientController
+    removeClientController,
+    MailerController
   ],
   providers: [ClientService],
 })

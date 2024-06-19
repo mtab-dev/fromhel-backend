@@ -11,15 +11,14 @@ export class MailerController{
         public readonly clientService: ClientService,
         public readonly mailService: CustomMailService
     )
-
     async sendEmail(){
         try{
             const clients = await this.clientService.clientList()
             clients.map((client) => {
                 this.mailerService.sendEmail(client.clientName, client.email)
             });
-        }catch{
-
+        }catch(error){
+            return error
         }
 
     }
