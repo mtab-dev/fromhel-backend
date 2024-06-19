@@ -9,12 +9,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-  // app.enableCors({
-  //   origin: 'http://localhost:4200/home#about-bullet',
-  //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  //   allowedHeaders: ['Content-Type', 'Authorization'],
-  // });
-
+  
   const config = new DocumentBuilder()
   .setTitle('FromHel Studio Backend Documentation')
   .setDescription('Routes')
