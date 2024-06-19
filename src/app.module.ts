@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ClientsModule } from './clients/clients.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ENVIROMENT } from './config/env';
+// import { CorsModule } from '@nestjs/common' ; // Import CorsModule from the appropriate package
 
 @Module({
   imports: [
@@ -13,4 +14,4 @@ import { ENVIROMENT } from './config/env';
     ClientsModule,
   ],
 })
-export class AppModule {}
+export class AppModule {} 
