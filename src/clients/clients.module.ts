@@ -7,12 +7,26 @@ import { findEmailController } from './application/controllers/findEmail.control
 import { registerClientController } from './application/controllers/registerClient.controller';
 import { IdFindController } from './application/controllers/clientsById.controller';
 import { removeClientController } from './application/controllers/removeClient.controller';
+import { MailerModule } from '@nestjs-modules/mailer'
 
 @Module({
   imports: [  
     MongooseModule.forFeature([
       { name: Client.name, schema: ClientSchema },
     ]),
+    MailerModule.forRoot({
+      transport: 'smtps://user@domain.com:pass@smtp.domain.com',
+      defaults: {
+        from: '"nest-modules" <modules@nestjs.com>',
+      },
+      template: {
+        dir: __dirname + '/templates',
+        adapter: new PugAdapter(),
+        options: {
+          strict: true,
+        },
+      },
+    }),
   ],
   controllers: [
     findClientController,
