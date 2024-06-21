@@ -29,7 +29,7 @@ export class CreateClientDto {
         example: 'johndoe@johndow.com',
         required: true
         })
-     email!: string;
+     clientEmail!: string;
 
     @IsDate()
     @IsOptional()
@@ -39,5 +39,5 @@ export class CreateClientDto {
         example: '2021-09-01',
         required: false
     })
-    registeredAt?: String;
+    createdAt?: String;
 }

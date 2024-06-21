@@ -1,4 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
+import { CreateClientDto } from '../../application/dto/create-client.dto';
 import { ClientsSchema } from '../schema/clients.entity';
 
 @EntityRepository(ClientsSchema)
