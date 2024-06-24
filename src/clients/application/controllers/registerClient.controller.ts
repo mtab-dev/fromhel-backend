@@ -17,7 +17,7 @@ export class registerClientController {
     })
     
     async clientRegister(@Body() createClientDto: CreateClientDto) {
-      const emailExists: boolean = await this.clientService.checkEmail(createClientDto.email);
+      const emailExists: boolean = await this.clientService.checkEmail(createClientDto.clientEmail);
       if (emailExists) {
         throw new ConflictException('Email are already exists');
       }

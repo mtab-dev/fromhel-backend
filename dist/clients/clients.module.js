@@ -24,7 +24,7 @@ exports.ClientsModule = ClientsModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forFeature([
                 { name: client_entity_1.Client.name, schema: client_entity_1.ClientSchema },
-            ]),
+            ])
         ],
         controllers: [
             findClients_controller_1.findClientController,

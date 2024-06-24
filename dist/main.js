@@ -9,7 +9,11 @@ const swagger_1 = require("@nestjs/swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalPipes(new common_1.ValidationPipe());
-    app.enableCors();
+    app.enableCors({
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        allowedHeaders: '*',
+    });
     const config = new swagger_1.DocumentBuilder()
         .setTitle('FromHel Studio Backend Documentation')
         .setDescription('Routes')
@@ -18,9 +22,9 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/docs', app, document);
     apiDocumentation_1.ApiDocumentation.setup(app);
-    await app.listen(process.env.USER_PORT);
+    await app.listen(env_1.ENVIROMENT.USER_PORT);
     common_1.Logger.log(`=============${env_1.ENVIROMENT.USER_PORT}==============`);
-    common_1.Logger.log(`MONGO URL: ${process.env.MONGO_URL_PRD}`);
+    common_1.Logger.log(`MONGO URL: ${env_1.ENVIROMENT.MONGO_URL_PRD}`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
