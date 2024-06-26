@@ -26,7 +26,7 @@ export class Client {
         required: true,
         unique: true,
     })
-     clientEmail: string;
+     email: string;
 
     @Prop({
         type: String,
