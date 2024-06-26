@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
-    origin: 'https://www.fromhelstudio.com', 
+    origin: '*', 
     methods: 'GET,PUT,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization',
   });
