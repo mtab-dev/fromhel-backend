@@ -25,7 +25,7 @@ export class ClientService implements IClientContract{
   async clientRegister(createClientDto: CreateClientDto) {
     //register client
     try {
-      createClientDto.clientId = "FHS" + Math.floor(Math.random() * 100000);
+      createClientDto.clientId = "FHS-" + Math.floor(Math.random() * 100000);
       await new this.clientModel(createClientDto).save(); // Save the client
       return 'Client created successfully';
     } catch (error) {
