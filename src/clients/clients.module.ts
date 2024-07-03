@@ -7,6 +7,7 @@ import { findEmailController } from './infra/controllers/findEmail.controller';
 import { registerClientController } from './infra/controllers/registerClient.controller';
 import { IdFindController } from './infra/controllers/clientsById.controller';
 import { removeClientController } from './infra/controllers/removeClient.controller';
+import { CreateClientUseCase } from './application/useCases/createUseCase';
 
 @Module({
   imports: [  
@@ -21,6 +22,9 @@ import { removeClientController } from './infra/controllers/removeClient.control
     IdFindController,
     removeClientController
   ],
-  providers: [ClientService],
+  providers: [
+    ClientService,
+    CreateClientUseCase
+  ],
 })
 export class ClientsModule {}
