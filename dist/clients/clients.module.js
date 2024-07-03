@@ -16,6 +16,9 @@ const findEmail_controller_1 = require("./infra/controllers/findEmail.controller
 const registerClient_controller_1 = require("./infra/controllers/registerClient.controller");
 const clientsById_controller_1 = require("./infra/controllers/clientsById.controller");
 const removeClient_controller_1 = require("./infra/controllers/removeClient.controller");
+const createUseCase_1 = require("./application/useCases/createUseCase");
+const clientMappers_1 = require("./infra/repositories/clientMappers");
+const clientRepository_1 = require("./infra/repositories/clientRepository");
 let ClientsModule = class ClientsModule {
 };
 exports.ClientsModule = ClientsModule;
@@ -33,7 +36,12 @@ exports.ClientsModule = ClientsModule = __decorate([
             clientsById_controller_1.IdFindController,
             removeClient_controller_1.removeClientController
         ],
-        providers: [clients_service_1.ClientService],
+        providers: [
+            clients_service_1.ClientService,
+            createUseCase_1.CreateClientUseCase,
+            clientRepository_1.ClientRepository,
+            clientMappers_1.ClientMapper
+        ],
     })
 ], ClientsModule);
 //# sourceMappingURL=clients.module.js.map

@@ -19,7 +19,7 @@ export class ClientRepository{
         const newClient = new this.conn(schema)
         return void await newClient.save()
     }catch(error){
-      throw new error('Error at registering client (repository)', error)
+      throw new Error('Error at registering client (repository)')
     }
   }
 

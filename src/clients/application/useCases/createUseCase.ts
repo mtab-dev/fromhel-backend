@@ -24,10 +24,9 @@ export class CreateClientUseCase{
             clientEmail: props.clientEmail,
             registeredAt: new Date().toISOString()
         })
-    
         return void (await this.clientRepository.save(newClient))
     }catch(error){
-      throw new error('Error at registering client (useCase)', error)
+      throw new Error('Error at registering client (useCase)')
     }
     }
 }

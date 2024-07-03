@@ -30,7 +30,7 @@ export class registerClientController {
       try{
         return this.useCase.run(createClientDto);
       }catch(error){
-        throw new error('Error at registering client (controller)', error)
+        throw new Error('Error at registering client (controller)')
       }
     }
 }
