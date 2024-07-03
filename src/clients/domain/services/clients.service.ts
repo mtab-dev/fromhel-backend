@@ -29,7 +29,7 @@ export class ClientService implements IClientContract{
       await new this.clientModel(createClientDto).save(); // Save the client
       return 'Client created successfully';
     } catch (error) {
-      return 'Client registration failed' + error;
+      return 'Client registration failed' + error.message;
     }
   }
 
