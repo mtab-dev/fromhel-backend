@@ -13,13 +13,13 @@ export class ClientRepository{
     private readonly conn: Model<clientDocument>
   ) { }
 
-  public async save (entity: ClientAggregate): Promise<void> {
+  public async save (entity: ClientAggregate){
     try{
         const schema = this.mapper.toPersistence(entity)
         const newClient = new this.conn(schema)
         return void await newClient.save()
     }catch(error){
-      throw new Error('Error at registering client (repository)')
+      throw new Error(error)
     }
   }
 

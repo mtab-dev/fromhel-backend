@@ -7,8 +7,8 @@ import { ENVIROMENT } from './config/env';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(ENVIROMENT.MONGO_URL_PRD,
-      {dbName: ENVIROMENT.MONGO_CONNECTION_DATABASE}
+    MongooseModule.forRoot(process.env.MONGO_URL_PRD,
+      {dbName: process.env.MONGO_CONNECTION_DATABASE}
     ),
     ClientsModule,
   ],

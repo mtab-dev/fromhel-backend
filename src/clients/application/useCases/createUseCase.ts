@@ -9,7 +9,6 @@ export type TCreateClientInput = {
     registeredAt?: string
 }
 
-
 export class CreateClientUseCase{
   public constructor (
     @Inject(ClientRepository)
@@ -29,7 +28,7 @@ export class CreateClientUseCase{
         })
         return await this.clientRepository.save(newClient)
     }catch(error){
-      throw new Error('Error at registering client (useCase)')
+      throw new Error(error)
     }
     }
 }
