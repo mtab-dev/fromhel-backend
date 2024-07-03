@@ -5,7 +5,7 @@ import { ClientRepository } from '../../infra/repositories/clientRepository'
 export type TCreateClientInput = {
     clientId?: string
     clientName: string
-    clientEmail: string
+    email: string
     registeredAt?: string
 }
 
@@ -23,7 +23,7 @@ export class CreateClientUseCase{
         const newClient = ClientAggregate.create({
             clientId: CreateClientUseCase.generateId(),
             clientName: props.clientName,
-            clientEmail: props.clientEmail,
+            email: props.email,
             registeredAt: new Date().toISOString()
         })
         return await this.clientRepository.save(newClient)

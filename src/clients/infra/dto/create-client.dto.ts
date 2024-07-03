@@ -29,7 +29,7 @@ export class CreateClientDto {
         example: 'johndoe@johndow.com',
         required: true
         })
-     clientEmail!: string;
+     email!: string;
 
     @IsDate()
     @IsOptional()

@@ -2,7 +2,7 @@
 export interface IClientContract {
     clientId: string
     clientName: string
-    clientEmail: string
+    email: string
     registeredAt: string
   }
   

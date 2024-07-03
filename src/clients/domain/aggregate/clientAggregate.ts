@@ -1,7 +1,7 @@
 export type TClientProps = {
     clientId: string
     clientName: string
-    clientEmail: string
+    email: string
     registeredAt?: string
 }
 
@@ -12,12 +12,12 @@ export class ClientAggregate{
     }
     public get clientId(): string { return this.props.clientId }
     public get clientName(): string { return this.props.clientName }
-    public get clientEmail(): string { return this.props.clientEmail }
+    public get email(): string { return this.props.email }
     public get registeredAt(): string | undefined { return this.props.registeredAt }
 
     public set setClientId(newClientId: string) { this.props.clientId = newClientId }
     public set setClientName(newClientName: string) { this.props.clientName = newClientName }
-    public set clientEmail(newClientEmail: string) { this.props.clientEmail = newClientEmail }
+    public set setEmail(newEmail: string) { this.props.email = newEmail }
     public set registeredAt(newRegisteredAt: string) { this.props.registeredAt = newRegisteredAt }
 
     private static generateId(): string {
@@ -39,7 +39,7 @@ export class ClientAggregate{
         return {
             clientId: this.clientId,
             clientName: this.clientName,
-            clientEmail: this.clientEmail,
+            email: this.email,
             registeredAt: this.registeredAt
         }
     }

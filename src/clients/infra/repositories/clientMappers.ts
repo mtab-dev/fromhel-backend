@@ -6,7 +6,7 @@ export class ClientMapper {
     return {
       clientId: target.clientId,
       clientName: target.clientName,
-      clientEmail: target.clientEmail,
+      email: target.email,
       registeredAt: target.registeredAt
     }
   }
