@@ -16,10 +16,13 @@ export class CreateClientUseCase{
     private readonly clientRepository: ClientRepository
   ) {}
 
+  private static generateId(): string {
+    return `FHS-${Math.floor(Math.random() * 100000)}`
+}
   public async run (props: TCreateClientInput) {
     try{
         const newClient = ClientAggregate.create({
-            clientId: props.clientId,
+            clientId: CreateClientUseCase.generateId(),
             clientName: props.clientName,
             clientEmail: props.clientEmail,
             registeredAt: new Date().toISOString()
