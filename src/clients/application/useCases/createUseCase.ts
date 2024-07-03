@@ -17,14 +17,17 @@ export class CreateClientUseCase{
   ) {}
 
   public async run (props: TCreateClientInput) {
-    const newClient = ClientAggregate.create({
-        clientId: props.clientId,
-        clientName: props.clientName,
-        clientEmail: props.clientEmail,
-        registeredAt: new Date().toISOString()
-    })
-
-    return void (await this.clientRepository.save(newClient))
-
-  }
+    try{
+        const newClient = ClientAggregate.create({
+            clientId: props.clientId,
+            clientName: props.clientName,
+            clientEmail: props.clientEmail,
+            registeredAt: new Date().toISOString()
+        })
+    
+        return void (await this.clientRepository.save(newClient))
+    }catch(error){
+      throw new error('Error at registering client (useCase)', error)
+    }
+    }
 }

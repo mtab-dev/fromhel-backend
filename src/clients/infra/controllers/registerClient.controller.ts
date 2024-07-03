@@ -27,6 +27,10 @@ export class registerClientController {
       if (emailExists) {
         throw new ConflictException('Email are already exists');
       }
-      return this.useCase.run(createClientDto);
+      try{
+        return this.useCase.run(createClientDto);
+      }catch(error){
+        throw new error('Error at registering client (controller)', error)
+      }
     }
 }

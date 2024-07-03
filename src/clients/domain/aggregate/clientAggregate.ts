@@ -25,11 +25,15 @@ export class ClientAggregate{
     }
 
     public static create(values: TClientProps){
-        if (!values.clientId) {
-            values.clientId = ClientAggregate.generateId()
-        }
-        return new ClientAggregate(values)
+        try{
+            if (!values.clientId) {
+                values.clientId = ClientAggregate.generateId()
+            }
+            return new ClientAggregate(values)
+        }catch(error){
+            throw new Error('Error at creating client (aggregate)')
     }
+}
 
     public toJSON() {
         return {

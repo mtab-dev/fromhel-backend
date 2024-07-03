@@ -14,9 +14,13 @@ export class ClientRepository{
   ) { }
 
   public async save (entity: ClientAggregate): Promise<void> {
-    const schema = this.mapper.toPersistence(entity)
-    const newClient = new this.conn(schema)
-    return void await newClient.save()
+    try{
+        const schema = this.mapper.toPersistence(entity)
+        const newClient = new this.conn(schema)
+        return void await newClient.save()
+    }catch(error){
+      throw new error('Error at registering client (repository)', error)
+    }
   }
 
   public async find (): Promise<ClientAggregate[]> {
