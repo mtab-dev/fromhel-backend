@@ -8,6 +8,8 @@ import { registerClientController } from './infra/controllers/registerClient.con
 import { IdFindController } from './infra/controllers/clientsById.controller';
 import { removeClientController } from './infra/controllers/removeClient.controller';
 import { CreateClientUseCase } from './application/useCases/createUseCase';
+import { ClientMapper } from './infra/repositories/clientMappers';
+import { ClientRepository } from './infra/repositories/clientRepository';
 
 @Module({
   imports: [  
@@ -24,7 +26,9 @@ import { CreateClientUseCase } from './application/useCases/createUseCase';
   ],
   providers: [
     ClientService,
-    CreateClientUseCase
+    CreateClientUseCase,
+    ClientRepository,
+    ClientMapper
   ],
 })
 export class ClientsModule {}
