@@ -1,5 +1,5 @@
-import { CreateClientDto } from "../../clients/application/dto/create-client.dto";
-import { Client } from "../../clients/domain/schema/client.entity";
+import { CreateClientDto } from "../../infra/dto/create-client.dto";
+import { Client } from "../../infra/schema/clientSchema";
 
 export interface IClientContract {
       checkEmail(email: string): Promise<boolean>;

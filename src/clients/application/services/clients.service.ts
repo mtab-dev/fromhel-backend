@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateClientDto } from '../../application/dto/create-client.dto';
+import { CreateClientDto } from '../../infra/dto/create-client.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Client, clientDocument } from '../schema/client.entity';
-import { IClientContract } from '../../../shared/contracts/service.contract';
+import { Client, clientDocument } from '../../infra/schema/clientSchema';
+import { IClientContract } from '../../domain/contracts/service.contract';
 
 @Injectable()
 export class ClientService implements IClientContract{

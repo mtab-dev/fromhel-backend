@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ClientService } from './domain/services/clients.service';
-import { Client, ClientSchema } from './domain/schema/client.entity';
-import { findClientController } from './application/controllers/findClients.controller';
-import { findEmailController } from './application/controllers/findEmail.controller';
-import { registerClientController } from './application/controllers/registerClient.controller';
-import { IdFindController } from './application/controllers/clientsById.controller';
-import { removeClientController } from './application/controllers/removeClient.controller';
+import { ClientService } from './application/services/clients.service';
+import { Client, ClientSchema } from './infra/schema/clientSchema';
+import { findClientController } from './infra/controllers/findClients.controller';
+import { findEmailController } from './infra/controllers/findEmail.controller';
+import { registerClientController } from './infra/controllers/registerClient.controller';
+import { IdFindController } from './infra/controllers/clientsById.controller';
+import { removeClientController } from './infra/controllers/removeClient.controller';
+import { CreateClientUseCase } from './application/useCases/createUseCase';
+import { ClientMapper } from './infra/repositories/clientMappers';
+import { ClientRepository } from './infra/repositories/clientRepository';
 
 @Module({
   imports: [  
@@ -21,6 +24,11 @@ import { removeClientController } from './application/controllers/removeClient.c
     IdFindController,
     removeClientController
   ],
-  providers: [ClientService],
+  providers: [
+    ClientService,
+    CreateClientUseCase,
+    ClientRepository,
+    ClientMapper
+  ],
 })
 export class ClientsModule {}
