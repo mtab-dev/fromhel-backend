@@ -9,13 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientsModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const clients_service_1 = require("./domain/services/clients.service");
-const client_entity_1 = require("./domain/schema/client.entity");
-const findClients_controller_1 = require("./application/controllers/findClients.controller");
-const findEmail_controller_1 = require("./application/controllers/findEmail.controller");
-const registerClient_controller_1 = require("./application/controllers/registerClient.controller");
-const clientsById_controller_1 = require("./application/controllers/clientsById.controller");
-const removeClient_controller_1 = require("./application/controllers/removeClient.controller");
+const clients_service_1 = require("./application/services/clients.service");
+const clientSchema_1 = require("./infra/schema/clientSchema");
+const findClients_controller_1 = require("./infra/controllers/findClients.controller");
+const findEmail_controller_1 = require("./infra/controllers/findEmail.controller");
+const registerClient_controller_1 = require("./infra/controllers/registerClient.controller");
+const clientsById_controller_1 = require("./infra/controllers/clientsById.controller");
+const removeClient_controller_1 = require("./infra/controllers/removeClient.controller");
 let ClientsModule = class ClientsModule {
 };
 exports.ClientsModule = ClientsModule;
@@ -23,7 +23,7 @@ exports.ClientsModule = ClientsModule = __decorate([
     (0, common_1.Module)({
         imports: [
             mongoose_1.MongooseModule.forFeature([
-                { name: client_entity_1.Client.name, schema: client_entity_1.ClientSchema },
+                { name: clientSchema_1.Client.name, schema: clientSchema_1.ClientSchema },
             ])
         ],
         controllers: [

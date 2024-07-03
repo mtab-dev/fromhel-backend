@@ -1,11 +1,17 @@
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger'
-import { Controller, Post, Body, ConflictException } from '@nestjs/common';
+import { Controller, Post, Body, ConflictException, Inject } from '@nestjs/common';
 import { ClientService } from '../../application/services/clients.service';
 import { CreateClientDto } from '../dto/create-client.dto';
+import { CreateClientUseCase } from '../../application/useCases/createUseCase';
 
 @Controller()
 export class registerClientController {
-    constructor(private readonly clientService: ClientService) { }
+    public constructor(
+      @Inject(ClientService)
+      private readonly clientService: ClientService,
+      @Inject(CreateClientUseCase)
+      private readonly useCase: CreateClientUseCase,
+      ) { }
 
     @Post('register') //registering clients
 
@@ -17,10 +23,10 @@ export class registerClientController {
     })
     
     async clientRegister(@Body() createClientDto: CreateClientDto) {
-      const emailExists: boolean = await this.clientService.checkEmail(createClientDto.email);
+      const emailExists: boolean = await this.clientService.checkEmail(createClientDto.clientEmail);
       if (emailExists) {
         throw new ConflictException('Email are already exists');
       }
-      return this.clientService.clientRegister(createClientDto);
+      return this.useCase.run(createClientDto);
     }
 }

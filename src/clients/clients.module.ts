@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ClientService } from './application/services/clients.service';
-import { Client, ClientSchema } from './infra/schema/client.entity';
+import { Client, ClientSchema } from './infra/schema/clientSchema';
 import { findClientController } from './infra/controllers/findClients.controller';
 import { findEmailController } from './infra/controllers/findEmail.controller';
 import { registerClientController } from './infra/controllers/registerClient.controller';
