@@ -67,7 +67,7 @@ export class ClientService implements IClientContract{
 
   async clientRemove(clientId: string){
     try{
-      await this.clientModel.deleteOne({clientId: clientId})
+      await this.clientModel.deleteOne({clientId: clientId}).exec();
     }catch(error){
       throw new Error(`Failed to remove client with ID ${clientId}: ${error.message}`)
     }
