@@ -1,7 +1,7 @@
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { Controller, Body, Post } from '@nestjs/common';
 import { ClientService } from '../../application/services/clients.service';
-import { CreateClientDto } from '../dto/create-client.dto';
+import { DeleteClientDto } from '../dto/deleteUser.dto';
 
 @Controller()
 export class removeClientController {
@@ -10,12 +10,12 @@ export class removeClientController {
     @Post('delete')
 
     @ApiTags('Delete Methods')
-    @ApiBody({ type:  CreateClientDto})
+    @ApiBody({ type:  DeleteClientDto})
     @ApiResponse({
       status: 200,
       description: 'The client has been succesfully deleted'
     }) //removing a client by id
-    clientDelete(@Body() createClientDto: CreateClientDto) {
-      return this.clientService.clientRemove(dto.id);
+    clientDelete(@Body() dto: DeleteClientDto) {
+      return this.clientService.clientRemove(dto.clientId);
     }
 }
