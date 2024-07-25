@@ -7,7 +7,7 @@ import { CreateClientDto } from '../dto/create-client.dto';
 export class removeClientController {
     constructor(private readonly clientService: ClientService) { }
 
-    @Delete('delete/:id')
+    @Post('delete')
 
     @ApiTags('Delete Methods')
     @ApiBody({ type:  CreateClientDto})
@@ -15,7 +15,7 @@ export class removeClientController {
       status: 200,
       description: 'The client has been succesfully deleted'
     }) //removing a client by id
-    clientDelete(@Param('id') id: string) {
-      return this.clientService.clientRemove(id);
+    clientDelete(@Body() createClientDto: CreateClientDto) {
+      return this.clientService.clientRemove(dto.id);
     }
 }
