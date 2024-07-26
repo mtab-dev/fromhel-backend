@@ -1,5 +1,5 @@
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger'
-import { Controller, Body, Post } from '@nestjs/common';
+import { Controller, Body, Delete } from '@nestjs/common';
 import { ClientService } from '../../application/services/clients.service';
 import { DeleteClientDto } from '../dto/deleteUser.dto';
 
@@ -7,7 +7,7 @@ import { DeleteClientDto } from '../dto/deleteUser.dto';
 export class removeClientController {
     constructor(private readonly clientService: ClientService) { }
 
-    @Post('delete')
+    @Delete('delete')
 
     @ApiTags('Delete Methods')
     @ApiBody({ type:  DeleteClientDto})
