@@ -15,7 +15,7 @@
         "POST",
         "OPTIONS",
         "PUT",
-        "PATCH",
+        "PATCH",  
         "DELETE"
       ],
       "headers": {
