@@ -13,10 +13,10 @@
       "methods": [
         "GET",
         "POST",
-        "OPTIONS",
         "PUT",
         "PATCH",  
-        "DELETE"
+        "DELETE",
+        "OPTIONS"
       ],
       "headers": {
         "Acces-Control-Allow-Origin": "*"
