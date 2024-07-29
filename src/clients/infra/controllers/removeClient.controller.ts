@@ -1,11 +1,14 @@
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger'
-import { Controller, Body, Delete } from '@nestjs/common';
-import { ClientService } from '../../application/services/clients.service';
+import { Inject, Controller, Body, Delete } from '@nestjs/common';
+import { RemoveUserUseCase } from '../../application/useCases/removeUserUseCase';
 import { DeleteClientDto } from '../dto/deleteUser.dto';
 
 @Controller()
 export class removeClientController {
-    constructor(private readonly clientService: ClientService) { }
+    public constructor(
+      @Inject(RemoveUserUseCase)
+      private readonly useCase: RemoveUserUseCase
+    ) {}
 
     @Delete('delete')
 
@@ -16,6 +19,6 @@ export class removeClientController {
       description: 'The client has been succesfully deleted'
     }) //removing a client by id
     clientDelete(@Body() dto: DeleteClientDto) {
-      return this.clientService.clientRemove(dto.clientId);
+      return this.useCase.removeUser(dto.clientId);
     }
 }

@@ -23,6 +23,15 @@ export class ClientRepository{
     }
   }
 
+  public async delete (clientId: string){
+    try{
+        const client = await this.conn.find({clientId})
+        return void await this.conn.deleteOne({ _id: client[0]._id })
+    }catch(error){
+      throw error
+    }
+  }
+
   public async find (): Promise<ClientAggregate[]> {
     return await this.conn.find()
   }

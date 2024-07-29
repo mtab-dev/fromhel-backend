@@ -9,6 +9,7 @@ import { IdFindController } from './infra/controllers/clientsById.controller';
 import { removeClientController } from './infra/controllers/removeClient.controller';
 import { CreateClientUseCase } from './application/useCases/createUseCase';
 import { ClientMapper } from './infra/repositories/clientMappers';
+import { RemoveUserUseCase } from './application/useCases/removeUserUseCase';
 import { ClientRepository } from './infra/repositories/clientRepository';
 
 @Module({
@@ -27,6 +28,7 @@ import { ClientRepository } from './infra/repositories/clientRepository';
   providers: [
     ClientService,
     CreateClientUseCase,
+    RemoveUserUseCase,
     ClientRepository,
     ClientMapper
   ],
