@@ -24,7 +24,7 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document)
   ApiDocumentation.setup(app)
   
-  await app.listen(process.env.USER_PORT || 3000);
+  await app.listen(process.env.PORT|| 3000);
   Logger.log(`=============${process.env.USER_PORT || ENVIROMENT.USER_PORT}==============`)
   Logger.log(`MONGO URL: ${process.env.MONGO_URL_PRD || ENVIROMENT.MONGO_URL_PRD}`)
 
